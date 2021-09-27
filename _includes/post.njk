@@ -1,0 +1,66 @@
+---
+layout: layouts/base.njk
+---
+<article>
+  <div class="font-medium text-gray-400 text-center">
+    <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+  </div>
+  <h1 class="pb-8 text-4xl font-extrabold leading-normal text-center border-b">
+    {{ title }}
+  </h1>
+  <div class="pt-11 flex">
+    <div class="order-2 w-3/4 divide-y">
+      <div class="pb-6">
+        {{ content | safe }}
+      </div>
+      <div class="flex py-6 font-medium text-sm space-x-2">
+        <a class="text-gray-700" href="https://github.com" rel="nofollow"
+           target="_blank">
+          GitHub.com
+        </a>
+        <div>•</div>
+        <a class="text-gray-700" href="https://gitlab.com" rel="nofollow"
+           target="_blank">
+          GitLab.com
+        </a>
+      </div>
+    </div>
+    <div class="pr-8 w-1/4 divide-y">
+      <div class="pb-8">
+        <h3 class="my-0 text-sm font-medium text-gray-500 uppercase">Теги</h3>
+        <ul class="flex flex-wrap items-center text-sm font-medium leading-8">
+          {%- for tag in tags | filterTagList -%}
+            {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+            <li class="block mr-3">
+              <a class="px-1.5 py-1 bg-primary-50 uppercase" href="{{ tagUrl | url }}">{{ tag }}</a>
+            </li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div class="py-8 space-y-8">
+        {%- if collections.posts %}
+          {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+          {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+          {%- if previousPost or nextPost %}
+            {%- if previousPost %}
+              <div>
+                <h3 class="my-0 text-sm font-medium text-gray-500 uppercase">Предыдущий пост</h3>
+                <a class="text-sm font-medium" href="{{ previousPost.url | url }}">
+                  {{ previousPost.data.title }}
+                </a>
+              </div>
+            {% endif %}
+            {%- if nextPost %}
+              <div>
+                <h3 class="my-0 text-sm font-medium text-gray-500 uppercase">Следующий пост</h3>
+                <a class="text-sm font-medium" href="{{ nextPost.url | url }}">
+                  {{ nextPost.data.title }}
+                </a>
+              </div>
+            {% endif %}
+          {%- endif %}
+        {%- endif %}
+      </div>
+    </div>
+  </div>
+</article>

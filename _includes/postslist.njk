@@ -1,0 +1,29 @@
+{% for post in postslist %}
+  <article class="py-12">
+    <div class="flex font-medium">
+      <div class="text-gray-400 whitespace-nowrap">
+        <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+      </div>
+      <div class="px-2 text-gray-400">•</div>
+      <ul class="flex flex-wrap items-center text-sm font-medium leading-8">
+        {% for tag in post.data.tags | filterTagList %}
+          {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+          <li class="block mr-3">
+            <a class="px-1.5 py-1 bg-primary-50 uppercase" href="{{ tagUrl | url }}">{{ tag }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <h2 class="my-3 text-2xl font-bold">
+      <a class="text-gray-700" href="{{ post.url | url }}">
+        {{ post.data.title }}
+      </a>
+    </h2>
+    <div class="my-2">
+      {{ post.data.description }}
+    </div>
+    <div class="font-medium">
+      <a href="{{ post.url | url }}">Читать &rightarrow;</a>
+    </div>
+  </article>
+{% endfor %}

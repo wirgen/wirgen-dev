@@ -1,0 +1,11 @@
+---
+layout: layouts/base.njk
+---
+{% set postslist = collections.postsReverse | head(3) %}
+<h1 class="mb-4 text-4xl font-extrabold leading-normal sr-only">Последние посты</h1>
+<div class="divide-y">
+  {% include "postslist.njk" %}
+</div>
+<div class="flex justify-end font-medium text-lg">
+  <a href="{{ '/posts/' | url }}">Все посты &rightarrow;</a>
+</div>

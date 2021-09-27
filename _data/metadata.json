@@ -1,0 +1,21 @@
+{
+  "title": "WirGen DevZone",
+  "url": "https://wirgen.dev/",
+  "language": "ru",
+  "description": "Коллекция мануалов и сниппетов.",
+  "feed": {
+    "subtitle": "Коллекция мануалов и сниппетов.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://wirgen.dev/"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://wirgen.dev/feed/feed.json"
+  },
+  "author": {
+    "name": "Denis Nikiforov",
+    "email": "wirgen@wirgen.cloud",
+    "url": "https://wirgen.by/"
+  }
+}

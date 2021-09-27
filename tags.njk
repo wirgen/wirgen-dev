@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+eleventyNavigation:
+  key: Теги
+  order: 1
+---
+<div class="mx-48 min-h-screen/2 flex items-center">
+  <div class="mr-8 py-4 pr-8 border-r-4">
+    <h1 class="text-4xl font-extrabold leading-normal">Теги</h1>
+  </div>
+  <ul class="flex-grow flex flex-wrap font-medium">
+    {% for tag, count in collections.tagList %}
+      {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+      <li class="my-2 mr-5">
+        <a href="{{ tagUrl | url }}">
+          <span class="px-1.5 py-1 bg-primary-50 uppercase">{{ tag }}</span><span
+            class="px-1.5 py-1 text-gray-700 bg-gray-100">{{ count }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

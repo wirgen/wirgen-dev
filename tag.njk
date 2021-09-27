@@ -1,0 +1,27 @@
+---
+pagination:
+  data: collections.tags
+  size: 1
+  alias: tag
+  addAllPagesToCollections: true
+layout: layouts/base.njk
+eleventyComputed:
+  title: Тег “{{ tag.tagName }}”
+permalink: /tags/{{ tag.tagName | slug }}/{% if tag.pageNumber %}{{ tag.pageNumber + 1 }}/{% endif %}
+---
+{% set postslist = tag.pageData %}
+<h1 class="mb-4 text-4xl font-extrabold leading-normal">#{{ tag.tagName }}</h1>
+<div class="divide-y">
+  {% include "postslist.njk" %}
+</div>
+{% if tag.pages > 1 %}
+  <div class="flex justify-between font-medium text-lg">
+    {% if tag.pagination.first %}
+      <a style="width:200px" href="{{ tag.pagination.previous }}">&leftarrow; Предыдущие посты</a>
+    {% else %}<span style="width:200px"></span>{% endif %}
+    <div>{{ tag.pageNumber + 1 }} из {{ tag.pages }}</div>
+    {% if tag.pagination.last %}
+      <a style="width:200px" href="{{ tag.pagination.next }}">Следующие посты &rightarrow;</a>
+    {% else %}<span style="width:200px"></span>{% endif %}
+  </div>
+{% endif %}
