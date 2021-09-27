@@ -13,17 +13,18 @@ layout: layouts/base.njk
       <div class="pb-6">
         {{ content | safe }}
       </div>
-      <div class="flex py-6 font-medium text-sm space-x-2">
-        <a class="text-gray-700" href="https://github.com" rel="nofollow"
-           target="_blank">
-          GitHub.com
-        </a>
-        <div>•</div>
-        <a class="text-gray-700" href="https://gitlab.com" rel="nofollow"
-           target="_blank">
-          GitLab.com
-        </a>
-      </div>
+      {%- if links %}
+        <div class="flex py-6 font-medium text-sm space-x-2">
+          {%- for link in links -%}
+            {%- if links[0] != link %}
+              <div>•</div>
+            {%- endif %}
+            <a class="text-gray-700" href="{{ link.link | url }}" rel="nofollow" target="_blank">
+              {{ link.title }}
+            </a>
+          {%- endfor %}
+        </div>
+      {%- endif %}
     </div>
     <div class="pr-8 w-1/4 divide-y">
       <div class="pb-8">
