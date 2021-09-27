@@ -52,7 +52,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter('count', array => array.length)
 
-  eleventyConfig.addFilter('console', variable => console.log(variable))
+  eleventyConfig.addFilter('slugTitle', title => eleventyConfig.getFilter('slug')(title)
+    .replace(/[^a-z0-9 -]/g, '')
+  )
 
   eleventyConfig.addCollection('postsReverse', function (collection) {
     return collection.getFilteredByTag('posts').reverse()
