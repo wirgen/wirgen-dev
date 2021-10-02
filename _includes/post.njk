@@ -5,11 +5,11 @@ layout: layouts/base.njk
   <div class="font-medium text-gray-400 text-center">
     <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
   </div>
-  <h1 class="pb-8 text-4xl font-extrabold leading-normal text-center border-b">
+  <h1 class="pb-8 text-2xl md:text-3xl lg:text-4xl font-extrabold leading-normal text-center border-b">
     {{ title }}
   </h1>
-  <div class="pt-11 flex">
-    <div class="order-2 w-3/4 divide-y">
+  <div class="pt-6 lg:pt-11 flex flex-col lg:flex-row">
+    <div class="order-2 lg:w-3/4 divide-y">
       <div class="main pb-6">
         {{ content | safe }}
       </div>
@@ -26,10 +26,10 @@ layout: layouts/base.njk
         </div>
       {%- endif %}
     </div>
-    <div class="pr-8 w-1/4 divide-y">
+    <div class="lg:pr-8 lg:w-1/4 mb-8 lg:mb-0 divide-y border-b lg:border-b-0">
       <div class="pb-8">
         <h3 class="my-0 text-sm font-medium text-gray-500 uppercase">Теги</h3>
-        <ul class="flex flex-wrap items-center text-sm font-medium leading-8">
+        <ul class="flex flex-wrap items-center text-sm font-medium leading-6 md:leading-7 lg:leading-8">
           {%- for tag in tags | filterTagList -%}
             {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
             <li class="block mr-3">
@@ -38,7 +38,7 @@ layout: layouts/base.njk
           {%- endfor %}
         </ul>
       </div>
-      <div class="py-8 space-y-8">
+      <div class="hidden md:block py-8 space-y-8">
         {%- if collections.posts %}
           {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
           {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}

@@ -1,11 +1,11 @@
 {% for post in postslist %}
-  <article class="py-12">
-    <div class="flex font-medium">
+  <article class="py-8 lg:py-12">
+    <div class="flex font-medium text-sm md:text-base leading-6 md:leading-7 lg:leading-8">
       <div class="text-gray-400 whitespace-nowrap">
         <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
       </div>
       <div class="px-2 text-gray-400">•</div>
-      <ul class="flex flex-wrap items-center text-sm font-medium leading-8">
+      <ul class="flex flex-wrap items-center text-xs md:text-sm font-medium leading-6 md:leading-7 lg:leading-8">
         {% for tag in post.data.tags | filterTagList %}
           {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
           <li class="block mr-3">
@@ -14,7 +14,7 @@
         {% endfor %}
       </ul>
     </div>
-    <h2 class="my-3 text-2xl font-bold">
+    <h2 class="my-3 text-xl md:text-2xl font-bold">
       <a class="text-gray-700" href="{{ post.url | url }}">
         {{ post.data.title }}
       </a>

@@ -10,18 +10,20 @@ eleventyComputed:
 permalink: /tags/{{ tag.tagName | slug }}/{% if tag.pageNumber %}{{ tag.pageNumber + 1 }}/{% endif %}
 ---
 {% set postslist = tag.pageData %}
-<h1 class="mb-4 text-4xl font-extrabold leading-normal">#{{ tag.tagName }}</h1>
+<h1 class="mb-4 text-2xl md:text-3xl lg:text-4xl font-extrabold leading-normal">#{{ tag.tagName }}</h1>
 <div class="divide-y">
   {% include "postslist.njk" %}
 </div>
 {% if tag.pages > 1 %}
-  <div class="flex justify-between font-medium text-lg">
+  <div class="flex justify-between font-medium md:text-lg">
     {% if tag.pagination.first %}
-      <a style="width:200px" href="{{ tag.pagination.previous }}">&leftarrow; Предыдущие посты</a>
-    {% else %}<span style="width:200px"></span>{% endif %}
-    <div>{{ tag.pageNumber + 1 }} из {{ tag.pages }}</div>
+      <a class="flex-1 text-left md:hidden" href="{{ tag.pagination.previous }}">&leftarrow; Пред</a>
+      <a class="flex-1 text-left hidden md:block" href="{{ tag.pagination.previous }}">&leftarrow; Предыдущие посты</a>
+    {% else %}<span style="flex-1 text-left"></span>{% endif %}
+    <div class="mx-4 whitespace-nowrap">{{ tag.pageNumber + 1 }} из {{ tag.pages }}</div>
     {% if tag.pagination.last %}
-      <a style="width:200px" href="{{ tag.pagination.next }}">Следующие посты &rightarrow;</a>
-    {% else %}<span style="width:200px"></span>{% endif %}
+      <a class="flex-1 text-right hidden md:block" href="{{ tag.pagination.next }}">Следующие посты &rightarrow;</a>
+      <a class="flex-1 text-right md:hidden" href="{{ tag.pagination.next }}">След &rightarrow;</a>
+    {% else %}<span style="flex-1 text-left"></span>{% endif %}
   </div>
 {% endif %}

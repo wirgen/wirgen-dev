@@ -9,16 +9,18 @@ eleventyNavigation:
   key: Блог
   order: 2
 ---
-<h1 class="mb-4 text-4xl font-extrabold leading-normal sr-only">Блог</h1>
+<h1 class="mb-4 text-2xl md:text-3xl lg:text-4xl font-extrabold leading-normal sr-only">Блог</h1>
 <div class="divide-y">
   {% include "postslist.njk" %}
 </div>
-<div class="flex justify-between font-medium text-lg">
+<div class="flex justify-between font-medium md:text-lg">
   {% if page.url != pagination.href.first %}
-    <a style="width:200px" href="{{ pagination.href.previous }}">&leftarrow; Предыдущие посты</a>
-  {% else %}<span style="width:200px"></span>{% endif %}
-  <div>{{ pagination.pageNumber + 1 }} из {{ pagination.pages | count }}</div>
+    <a class="flex-1 text-left md:hidden" href="{{ pagination.href.previous }}">&leftarrow; Пред</a>
+    <a class="flex-1 text-left hidden md:block" href="{{ pagination.href.previous }}">&leftarrow; Предыдущие посты</a>
+  {% else %}<span style="flex-1 text-left"></span>{% endif %}
+  <div class="mx-4 whitespace-nowrap">{{ pagination.pageNumber + 1 }} из {{ pagination.pages | count }}</div>
   {% if page.url != pagination.href.last %}
-    <a style="width:200px" href="{{ pagination.href.next }}">Следующие посты &rightarrow;</a>
-  {% else %}<span style="width:200px"></span>{% endif %}
+    <a class="flex-1 text-right hidden md:block" href="{{ pagination.href.next }}">Следующие посты &rightarrow;</a>
+    <a class="flex-1 text-right md:hidden" href="{{ pagination.href.next }}">След &rightarrow;</a>
+  {% else %}<span style="flex-1 text-left"></span>{% endif %}
 </div>
