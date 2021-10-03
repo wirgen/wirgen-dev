@@ -23,7 +23,7 @@
     class="sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto px-6 sm:px-0 flex flex-col justify-between h-screen">
   <header class="py-7 flex justify-between items-center">
     <div class="flex">
-      <img class="mr-3 text-primary-500" width="32" height="32" src="/img/logo.svg">
+      <img class="mr-3 text-primary-500" width="32" height="32" src="/img/logo.svg" alt="logo">
       <a class="text-2xl font-bold text-gray-700" href="{{ '/' | url }}">{{ metadata.title }}</a>
     </div>
     <nav class="hidden sm:block text-lg font-medium">
@@ -39,7 +39,7 @@
       </ul>
     </nav>
     <div class="sm:hidden">
-      <button id="openMenu" type="button" class="w-8 h-8 ml-1 mr-1 rounded">
+      <button id="openMenu" type="button" class="w-8 h-8 ml-1 mr-1 rounded" aria-label="Toggle Menu">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
              class="text-gray-900 dark:text-gray-100">
           <path fill-rule="evenodd"
@@ -47,7 +47,7 @@
                 clip-rule="evenodd"></path>
         </svg>
       </button>
-      <button id="closeMenu" type="button" class="w-8 h-8 ml-1 mr-1 rounded hidden">
+      <button id="closeMenu" type="button" class="w-8 h-8 ml-1 mr-1 rounded hidden" aria-label="Toggle Menu">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
              class="text-gray-900 dark:text-gray-100">
           <path
