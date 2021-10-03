@@ -3,6 +3,7 @@ const fs = require('fs')
 const pluginRss = require('@11ty/eleventy-plugin-rss')
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 const pluginNavigation = require('@11ty/eleventy-navigation')
+const pluginTOC = require('eleventy-plugin-toc')
 const markdownIt = require('markdown-it')
 const iterator = require('markdown-it-for-inline')
 const markdownItAnchor = require('markdown-it-anchor')
@@ -12,6 +13,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss)
   eleventyConfig.addPlugin(pluginSyntaxHighlight)
   eleventyConfig.addPlugin(pluginNavigation)
+  eleventyConfig.addPlugin(pluginTOC, {
+    wrapper: 'div'
+  })
 
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true)
@@ -109,9 +113,10 @@ module.exports = function (eleventyConfig) {
     return new Map([...tagSet].sort((a, b) => String(b[1]).localeCompare(a[1])))
   })
 
-  // Copy the `img` and `css` folders to the output
+  // Copy the `img`, `css` and `js` folders to the output
   eleventyConfig.addPassthroughCopy('img')
   eleventyConfig.addPassthroughCopy('css')
+  eleventyConfig.addPassthroughCopy('js')
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({

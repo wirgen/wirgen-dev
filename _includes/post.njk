@@ -38,7 +38,7 @@ layout: layouts/base.njk
           {%- endfor %}
         </ul>
       </div>
-      <div class="hidden md:block py-8 space-y-8">
+      <div class="hidden lg:block py-8 space-y-8">
         {%- if collections.posts %}
           {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
           {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
@@ -62,6 +62,19 @@ layout: layouts/base.njk
           {%- endif %}
         {%- endif %}
       </div>
+      {% if content | toc %}
+        <nav class="py-8 sticky -top-8">
+          <h3 class="my-0 text-sm font-medium text-gray-500 uppercase">Содержание</h3>
+          {{ content | toc | safe }}
+        </nav>
+      {% endif %}
     </div>
   </div>
+  <a id="totop" class="fixed bottom-6 md:bottom-12 hidden" href="#">
+    <svg class="w-8 h-8 text-primary-500 fill-current" fill-rule="evenodd" clip-rule="evenodd" role="img"
+         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+          d="M24 12c0 6.623-5.377 12-12 12s-12-5.377-12-12 5.377-12 12-12 12 5.377 12 12zm-1 0c0 6.071-4.929 11-11 11s-11-4.929-11-11 4.929-11 11-11 11 4.929 11 11zm-11.5-4.828l-3.763 4.608-.737-.679 5-6.101 5 6.112-.753.666-3.747-4.604v11.826h-1v-11.828z" />
+    </svg>
+  </a>
 </article>

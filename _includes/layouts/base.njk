@@ -120,24 +120,6 @@
 
   gtag('config', 'G-Q7TT3J42NB');
 </script>
-<script type="text/javascript">
-  const openMenu = document.getElementById('openMenu')
-  const closeMenu = document.getElementById('closeMenu')
-  const mobileMenu = document.getElementById('mobileMenu')
-
-  openMenu.addEventListener('click', () => {
-    document.body.style.overflow = 'hidden'
-    mobileMenu.classList.remove('translate-x-full')
-    openMenu.classList.add('hidden')
-    closeMenu.classList.remove('hidden')
-  })
-
-  closeMenu.addEventListener('click', () => {
-    document.body.style.overflow = 'auto'
-    mobileMenu.classList.add('translate-x-full')
-    openMenu.classList.remove('hidden')
-    closeMenu.classList.add('hidden')
-  })
-</script>
+<script src="{{ '/js/scripts.js' | url }}" type="text/javascript"></script>
 </body>
 </html>
