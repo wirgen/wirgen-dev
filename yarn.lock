@@ -1461,6 +1461,11 @@ markdown-it-anchor@^8.1.2:
   resolved "https://registry.yarnpkg.com/markdown-it-anchor/-/markdown-it-anchor-8.3.1.tgz#b48a2097c89f82e1625db772b8a6a03e9e637cdc"
   integrity sha512-i12nPHfLM5uKQXVkzyJt5tZ7DetcYqZoCeiUc9OPqhAhqAR6SOswqMgzqEvDyT5BK6DOc8MmV78VjzCsYM5J5g==
 
+markdown-it-for-inline@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/markdown-it-for-inline/-/markdown-it-for-inline-0.1.1.tgz#435f2316f5b5e68e1450cfa2242f2b8d59adc75f"
+  integrity sha1-Q18jFvW15o4UUM+iJC8rjVmtx18=
+
 markdown-it@^10.0.0:
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-10.0.0.tgz#abfc64f141b1722d663402044e43927f1f50a8dc"

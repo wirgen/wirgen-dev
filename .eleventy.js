@@ -4,6 +4,7 @@ const pluginRss = require('@11ty/eleventy-plugin-rss')
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 const pluginNavigation = require('@11ty/eleventy-navigation')
 const markdownIt = require('markdown-it')
+const iterator = require('markdown-it-for-inline')
 const markdownItAnchor = require('markdown-it-anchor')
 
 module.exports = function (eleventyConfig) {
@@ -116,16 +117,37 @@ module.exports = function (eleventyConfig) {
   let markdownLibrary = markdownIt({
     html: true,
     breaks: true,
-    linkify: true
-  }).use(markdownItAnchor, {
-    permalink: markdownItAnchor.permalink.ariaHidden({
-      placement: 'after',
-      class: 'direct-link',
-      symbol: '#',
-      level: [1, 2, 3, 4],
-    }),
-    slugify: eleventyConfig.getFilter('slug')
+    linkify: false,
+    typographer: true
   })
+    .use(iterator, 'process_link', 'link_open', function (tokens, idx) {
+      const hrefIndex = tokens[idx].attrIndex('href');
+      const relIndex = tokens[idx].attrIndex('rel');
+      const targetIndex = tokens[idx].attrIndex('target');
+
+      if (tokens[idx].attrs[hrefIndex][1].substr(0, 1) !== '/') {
+        if (relIndex < 0) {
+          tokens[idx].attrPush(['rel', 'nofollow']);
+        } else {
+          tokens[idx].attrs[relIndex][1] = 'nofollow';
+        }
+      }
+
+      if (targetIndex < 0) {
+        tokens[idx].attrPush(['target', '_blank']);
+      } else {
+        tokens[idx].attrs[targetIndex][1] = '_blank';
+      }
+    })
+    .use(markdownItAnchor, {
+      permalink: markdownItAnchor.permalink.ariaHidden({
+        placement: 'after',
+        class: 'direct-link',
+        symbol: '#',
+        level: [1, 2, 3, 4],
+      }),
+      slugify: eleventyConfig.getFilter('slug')
+    })
   eleventyConfig.setLibrary('md', markdownLibrary)
 
   // Override Browsersync defaults (used only with --serve)
