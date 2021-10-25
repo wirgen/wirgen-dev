@@ -1,7 +1,7 @@
 {
-  "name": "eleventy-base-blog",
-  "version": "5.0.2",
-  "description": "A starter repository for a blog web site using the Eleventy static site generator.",
+  "name": "wirgen-dev",
+  "version": "1.0.0",
+  "description": "Collection of tutorials and snippets.",
   "scripts": {
     "build": "eleventy",
     "watch": "eleventy --watch",
@@ -9,22 +9,9 @@
     "start": "eleventy --serve",
     "debug": "DEBUG=* eleventy"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/11ty/eleventy-base-blog.git"
-  },
-  "author": {
-    "name": "Zach Leatherman",
-    "email": "zachleatherman@gmail.com",
-    "url": "https://zachleat.com/"
-  },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/11ty/eleventy-base-blog/issues"
-  },
-  "homepage": "https://github.com/11ty/eleventy-base-blog#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^1.0.0-beta.2",
     "@11ty/eleventy-navigation": "^0.3.2",
     "@11ty/eleventy-plugin-rss": "^1.1.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.2",
