@@ -133,9 +133,9 @@ module.exports = function (eleventyConfig) {
 
       if (tokens[idx].attrs[hrefIndex][1].substr(0, 1) !== '/') {
         if (relIndex < 0) {
-          tokens[idx].attrPush(['rel', 'nofollow']);
+          tokens[idx].attrPush(['rel', 'nofollow noopener']);
         } else {
-          tokens[idx].attrs[relIndex][1] = 'nofollow';
+          tokens[idx].attrs[relIndex][1] = 'nofollow noopener';
         }
       }
 
