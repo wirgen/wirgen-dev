@@ -11,7 +11,11 @@ const markdownItAnchor = require('markdown-it-anchor')
 
 module.exports = function (eleventyConfig) {
   // Add plugins
-  eleventyConfig.addPlugin(pluginCriticalCss)
+  eleventyConfig.addPlugin(pluginCriticalCss, {
+    ignore: {
+      atrule: ['@font-face'],
+    },
+  })
   eleventyConfig.addPlugin(pluginRss)
   eleventyConfig.addPlugin(pluginSyntaxHighlight)
   eleventyConfig.addPlugin(pluginNavigation)
