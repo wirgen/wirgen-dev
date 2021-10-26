@@ -1,5 +1,6 @@
 const { DateTime } = require('luxon')
 const fs = require('fs')
+const pluginCriticalCss = require('eleventy-critical-css')
 const pluginRss = require('@11ty/eleventy-plugin-rss')
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 const pluginNavigation = require('@11ty/eleventy-navigation')
@@ -10,6 +11,7 @@ const markdownItAnchor = require('markdown-it-anchor')
 
 module.exports = function (eleventyConfig) {
   // Add plugins
+  eleventyConfig.addPlugin(pluginCriticalCss)
   eleventyConfig.addPlugin(pluginRss)
   eleventyConfig.addPlugin(pluginSyntaxHighlight)
   eleventyConfig.addPlugin(pluginNavigation)
